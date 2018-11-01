@@ -4,17 +4,24 @@ import java.sql.SQLException;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import org.springframework.stereotype.Repository;
+
 import br.com.fitNet.model.Modalidade;
 import br.com.fitNet.model.percistence.Interfaces.IRepositorioModalidade;
 
+@Repository
 public class ModalidadeDao implements IRepositorioModalidade {
 
 	public static Set<Modalidade> LISTA_MODALIDADE = new LinkedHashSet<>();
+	
+	//@PersistenceContext
+	//private EntityManager manager;
 	
 	@Override
 	public void incluir(Modalidade modalidade) throws SQLException {
 		
 		LISTA_MODALIDADE.add(modalidade);
+		//manager.merge(modalidade);
 
 	}
 

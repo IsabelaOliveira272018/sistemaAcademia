@@ -3,42 +3,77 @@ package br.com.fitNet.model;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
+
+@Entity
+@Table(name="modalidades")
 public class Modalidade {
 	
+	@Id
+	@GeneratedValue
+	@Column(name="id_modalidade", nullable = false)
 	private int idModalidade;
+	
+	@Column(name="descricao", nullable = false)
 	private String descricao;
+	
+	@Column(name="valor")
 	private double valor;
+	
+	@Column(name="status")
 	private boolean statusAtivo;
 	
+	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
+	@Column(name="dataCadastro")
 	private Calendar dataCadastro;
 	
+	@Column(name="observacao")
 	private String observacao;
-	private Acesso acesso;
+	
+	
+	//private Acesso acesso;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
+	@Column(name="dataUltimaCadastro")
 	private Calendar dataAlteracao;
 	
-	private String eliminada;
+	
+	@Column(name="eliminada")
+	private boolean eliminada;
 
+	@Column(name="mod_id_usuario")
+	private int idUsuarioCadastro;
+	
+	@Column(name="id_usuarioAlteracao")
+	private int idUsuarioAlteracao;
 	
 	public Modalidade(){
 
 		this.dataCadastro = new GregorianCalendar();
 		this.dataAlteracao = new GregorianCalendar();
-		this.acesso = new Acesso();
-		this.eliminada = "N";
+		//this.acesso = new Acesso();
+		this.eliminada = false;
 	}
 	
-	public Acesso getAcesso() {
+	/*public Acesso getAcesso() {
 		return acesso;
 	}
 
 	public void setAcesso(Acesso acesso) {
 		this.acesso = acesso;
-	}
+	}*/
 	
 	public int getIdModalidade() {
 		return idModalidade;
@@ -67,11 +102,11 @@ public class Modalidade {
 		this.observacao = observacao;
 	}
 
-	public String getEliminada() {
+	public boolean isEliminada() {
 		return eliminada;
 	}
 
-	public void setEliminada(String eliminada) {
+	public void setEliminada(boolean eliminada) {
 		this.eliminada = eliminada;
 	}
 
@@ -98,6 +133,22 @@ public class Modalidade {
 
 	public void setDataAlteracao(Calendar dataAlteracao) {
 		this.dataAlteracao = dataAlteracao;
+	}
+
+	public int getIdUsuarioCadastro() {
+		return idUsuarioCadastro;
+	}
+
+	public void setIdUsuarioCadastro(int idUsuarioCadastro) {
+		this.idUsuarioCadastro = idUsuarioCadastro;
+	}
+
+	public int getIdUsuarioAlteracao() {
+		return idUsuarioAlteracao;
+	}
+
+	public void setIdUsuarioAlteracao(int idUsuarioAlteracao) {
+		this.idUsuarioAlteracao = idUsuarioAlteracao;
 	}
 
 	@Override

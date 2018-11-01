@@ -33,7 +33,7 @@
 		<div class="card-deck mb-3 text-center">
 			<div class="card mb-4 shadow-sm">
 				<div class="card-header">
-					<h4 class="my-0 font-weight-normal">Active</h4>
+					<h4 id="tituloActive" class="my-0 font-weight-normal">Active</h4>
 				</div>
 				<div class="card-body">
 					<h1 class="card-title pricing-card-title">
@@ -46,7 +46,8 @@
 						<li>-</li>
 					</ul>
 					<button type="button"
-						class="btn btn-lg btn-block btn-outline-primary">Inscreva-se</button>
+						class="btn btn-lg btn-block btn-outline-primary" data-toggle="modal" 
+	     data-target="#cadastrarClienteUsuario" onclick="inscreva();">Inscreva-se</button>
 				</div>
 			</div>
 			<div class="card mb-4 shadow-sm">
@@ -134,9 +135,7 @@
 								<label for="validationCPF">CPF</label> <input type="text"
 									name="cpf" minLenght="11" class="form-control" id="validationCPF"
 									placeholder="Apenas Números" required="required">
-									
 								<div class="invalid-feedback">Informe um Número	de CPF Válido.</div>
-								
 							</div>
 						</div>
 						<div class="form-row">
@@ -170,10 +169,17 @@
 								<div class="invalid-feedback">Por Favor redefina as Senhas. Minimo 6 digitos.</div>
 							</div>
 						</div>
+						<div class="form-row" >
+							<div class="col-md-12 mb-2">
+								<label id="lblNomePlano" hidden="true">Plano</label> 
+								<label id="txtNomePlano" class="form-control" hidden="true">Nome do plano</label> 
+								
+							</div>
+						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
 								data-dismiss="modal">Fechar</button>
-							<button type="submit" class="btn btn-success">Confirmar</button>
+							<button type="submit" class="btn btn-success" >Confirmar</button>
 						</div>
 					</form>
 				</div>
@@ -185,6 +191,7 @@
 	
 	<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+	<script	src="<%=request.getContextPath()%>/resources/js/novoScript.js"></script>
 	<script	src="<%=request.getContextPath()%>/resources/js/verificarSenhas.js"></script>
 	<script	src="<%=request.getContextPath()%>/resources/js/validarCpf.js"></script>
 	<script	src="<%=request.getContextPath()%>/resources/js/validaFormClienteUser.js"></script>
